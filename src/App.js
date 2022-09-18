@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React , { useState } from "react";
+import NewUser from "./components/NewUser";
+import User from "./components/User";
 
 function App() {
+
+  const [userInfo , setUserInfo] = useState([])
+
+  const UserDataStore = (datas) => {
+    setUserInfo((prevState) => { return [...prevState , datas]} )
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NewUser saveUserData={UserDataStore}/>
+      {/* <User UserName = {obj.name} UserAge = {obj.age}/> */}
+      {userInfo.map((data) => { return <User key={data.id} userName={data.name} userAge={data.age} />})}
     </div>
   );
 }
