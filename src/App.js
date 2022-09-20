@@ -1,6 +1,6 @@
 import React , { useState } from "react";
-import NewUser from "./components/NewUser";
-import User from "./components/User";
+import NewUser from "./components/User/NewUser";
+import User from "./components/User/User";
 
 function App() {
 
@@ -13,7 +13,6 @@ function App() {
   return (
     <div className="App">
       <NewUser saveUserData={UserDataStore}/>
-      {/* <User UserName = {obj.name} UserAge = {obj.age}/> */}
       {userInfo.map((data) => { return <User key={data.id} userName={data.name} userAge={data.age} />})}
     </div>
   );
